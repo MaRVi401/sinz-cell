@@ -1,7 +1,6 @@
 @extends('layout.admin.main')
 
 @section('content')
-
 <div class="main-content app-content mt-0">
     <div class="side-app">
 
@@ -10,10 +9,10 @@
 
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">Kelola Barang</h1>
+                <h1 class="page-title">Form Advanced</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('manage-barang') }}">Kelola Barang</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Forms</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Form Advanced</li>
                     </ol>
                 </div>
@@ -21,7 +20,7 @@
             <!-- PAGE-HEADER END -->
 
             <!-- Row -->
-            <form action="{{ route('barang-store') }}" method="POST">
+            <form action="{{ route('barang-store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-xl-4 col-md-4">
@@ -32,7 +31,7 @@
                             <div class=" card-body">
                                 <div class="row mb-5">
                                     <div class="col-lg-12 col-sm-12 mb-4 mb-lg-0">
-                                        <input type="file" name="image" class="dropify" data-allowed-file-extensions="jpg png gif" data-bs-height="180" />
+                                        <input type="file" name="image" class="dropify" data-allowed-file-extensions="jpg png gif" data-bs-height="180"/>
                                     </div>
                                 </div>
                             </div>
@@ -46,31 +45,39 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label class="form-label">Name</label>
-                                    <input class="form-control" type="text" placeholder="Input Product Name">
+                                    <input class="form-control" name="name" type="text" placeholder="Input Product Name">
+                                </div>
                                 <div class="form-group">
                                     <label class="form-label">Price</label>
-                                    <input class="form-control" id="price" type="text" placeholder="Input Product Price">
+                                    <input class="form-control" id="price" name="price" type="text" placeholder="Input Product Price">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Description</label>
-                                    <textarea id="summernote" class="form-control" placeholder="Input Product Description"></textarea>
+                                    <textarea id="summernote" class="form-control" name="description"></textarea>
                                 </div>
+                                
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary"> Save</button>
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <button class="btn btn-primary">Save</button>
-                        </div>
                     </div>
+                    
                 </div>
+            </form>
+            <!-- End Row-->
+
+            <!-- Row -->
+           
+            <!-- /Row -->
+        </div>
         <!-- CONTAINER CLOSED -->
+
     </div>
 </div>
-
 @endsection
 
-
 @section('js')
-
 <script type="text/javascript">
 		
     var rupiah = document.getElementById('price');
@@ -98,10 +105,11 @@
         return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
     }
 </script>
-
+<!-- FILE UPLOADES JS -->
 <script src="assets/plugins/fileuploads/js/fileupload.js"></script>
 <script src="assets/plugins/fileuploads/js/file-upload.js"></script>
 
+<!-- INTERNAL SUMMERNOTE Editor JS -->
 <script src="assets/plugins/summernote/summernote1.js"></script>
 <script src="assets/js/summernote.js"></script>
 
